@@ -41,9 +41,10 @@ public class PersonController {
     private Button newButton;
 
     @FXML
-    public void handleNewPerson(){
-        System.out.println("testest");
-        this.main.loadNewPerson();
+    public void handleNewPerson() {
+        Person tempPerson = new Person();
+        main.loadPersonEdit(tempPerson);
+        main.getPersonList().add(tempPerson);
     }
 
 
@@ -61,6 +62,14 @@ public class PersonController {
             alert.setContentText("Nikt nie został wybrany");
             alert.showAndWait();
         }
+    }
+
+    @FXML
+    private void handleNewPersonSave() {
+
+        Person tempPerson = new Person();
+        main.loadPersonEdit(tempPerson);
+        main.getPersonList().add(tempPerson);
     }
 
     @FXML
@@ -87,17 +96,25 @@ public class PersonController {
         firstNameCol.setCellValueFactory(cell -> cell.getValue().nameProperty());
         lastNameCol.setCellValueFactory(cell -> cell.getValue().lastNameProperty());
 
+        showPersonDetails(null);
+
         personTable.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldField, newField) -> showPersonDetails(newField));
     }
 
     private void showPersonDetails(Person person){
-        firstNamelabel.setText(person.getName());
-        lastNamelabel.setText(person.getLastName());
+        if(person != null) {
+            firstNamelabel.setText(person.getName());
+            lastNamelabel.setText(person.getLastName());
+        }else{
+            firstNamelabel.setText("");
+            lastNamelabel.setText("");
+        }
     }
 
     public void setMain(Main main) {
         this.main = main;
         personTable.setItems(this.main.getPersonList());
     }
+
 }

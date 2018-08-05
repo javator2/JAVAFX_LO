@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.151" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" fx:controller="com.sda.javafx.controller.PersonController" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.151" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <MenuBar>
             <menus>
@@ -74,7 +74,7 @@
         </AnchorPane>
         <ButtonBar prefHeight="40.0" prefWidth="496.0">
             <buttons>
-                <Button mnemonicParsing="false" text="Zapisz" />
+                <Button onAction="#handleNewPersonSave" mnemonicParsing="false" text="Zapisz" />
                 <Button mnemonicParsing="false" text="Anuluj" />
             </buttons>
             <VBox.margin>

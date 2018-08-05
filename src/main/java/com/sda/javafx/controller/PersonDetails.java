@@ -36,9 +36,10 @@ public class PersonDetails {
     public void setPerson(Person person){
 
         this.person = person;
-        name.setText(person.getName());
-        lastname.setText(person.getLastName());
-
+        if(person != null) {
+            name.setText(person.getName());
+            lastname.setText(person.getLastName());
+        }
     }
 
     public void handleOk(){

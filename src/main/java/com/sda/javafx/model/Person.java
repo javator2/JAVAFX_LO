@@ -12,7 +12,9 @@ public class Person {
     private StringProperty postalCode;
     private StringProperty telephone;
 
-    public Person(){}
+    public Person(){
+        this(null,null);
+    }
 
     public Person(String name, String lastName){
         this.name = new SimpleStringProperty(name);

@@ -10,13 +10,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +24,7 @@ public class Main extends Application {
     private VBox layout;
 
     private ObservableList<Person> personList = FXCollections.observableArrayList();
-    private List<PersonJSON> personJSONList = new ArrayList<PersonJSON>();
+    private List<PersonJSON> personJSONList = new ArrayList<>();
 
     public Main() throws IOException{
         personJSONList.add(new PersonJSON("JanTest", "Kowalski"));
@@ -87,17 +85,19 @@ public class Main extends Application {
         }
     }
 
-    public void loadNewPerson(){
+    public void loadNewPerson(Person person){
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource(
                     "/NewPerson.fxml"));
             VBox window = (VBox) loader.load();
 
+
             Stage editStage = new Stage();
             editStage.setTitle("edytuj osobe");
             Scene scene = new Scene(window);
             editStage.setScene(scene);
+
             editStage.show();
 
         }catch (IOException err){
